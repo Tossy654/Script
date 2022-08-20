@@ -314,12 +314,16 @@ function nobyda() {
 		}
 	}
 	const setPolicy = (group, policy) => {
+		if (isSurge !== 'undefined') {
+			$surge.setSelectGroupPolicy(group, policy);
+			$notification.post('Bili', 'changed to', policy);
+		}
 		if (isSurge && typeof ($httpAPI) !== 'undefined') {
 			return new Promise((resolve) => {
 				$httpAPI("POST", "v1/policy_groups/select", {
 					group_name: group,
 					policy: policy
-				}, (b) => resolve(!b.error || 0))
+				}, (b) => resolve(!b.error || 0));
 			})
 		}
 		if (isLoon && typeof ($config.getPolicy) !== 'undefined') {
