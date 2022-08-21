@@ -17,7 +17,13 @@ const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/offline
 // ----------
 let url = $request.url;
 if (typeof ($response) !== 'undefined') {
-	$done({url});
+	$done({
+				
+				headers: {
+					Location: url
+				},
+				body: "{}"
+			});
 } else {
 	const res = {
 			url: url.replace(/%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)&/g, '&')
