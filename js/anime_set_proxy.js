@@ -1,4 +1,5 @@
 /**
+ * Surge for Mac Bili 自动切换区域
  * URL Regex:
  * https://(www|live).bilibili.com/($|\?|#|\d+|anime|bangumi/play|video)
  * 
