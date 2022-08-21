@@ -11,9 +11,9 @@ const TARGET_POLICY_GROUP = 'Bili';
 const TARGET_PROXY = 'HK';
 const DIRECT = 'DIRECT';
 const DEFAULT = 'DIRECT';
-const SWITCH_REGEX = /^https:\/\/www\.bilibili\.com\/(anime|bangumi\/play)/;
-const DIRECT_REGEX = /^https:\/\/www\.bilibili\.com\/(Bide)/;
-const url = 'https://www.bilibili.com/video/';
+const SWITCH_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season)\?/;
+const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/offline\/version)\?/;
+const url = 'https://api.bilibili.com/x/offline/version?env=prod&fawkes_key=iphone';
 // ----------
 
 
@@ -68,7 +68,7 @@ promiseCurrentPolicy.then(currentPolicy => {
                 // on success: result === null
                 // on failure: result === {"error" : "invalid parameters"}
                 $notification.post(notificationMessage, url, result.error);
-		console.log(`${url}，${notificationMessage}, error`);}
+              console.log(`${url}，${notificationMessage}, error`);}
             $done();
         })
     }
