@@ -10,8 +10,10 @@
 const TARGET_POLICY_GROUP = 'Bili';
 const TARGET_PROXY = 'HK';
 const DIRECT = 'DIRECT';
+const DEFAULT = 'DIRECT';
 const SWITCH_REGEX = /^https:\/\/www\.bilibili\.com\/(anime|bangumi\/play)/;
-const url = 'https://www.bilibili.com/anime/play/';
+const DIRECT_REGEX = /^https:\/\/www\.bilibili\.com\/(Bide)/;
+const url = 'https://www.bilibili.com/video/';
 // ----------
 
 
@@ -40,8 +42,13 @@ if (SWITCH_REGEX.test(url)) {
     notificationMessage = '开启B站代理';
 } else {
     // set policy group to DIRECT
-    apiBody['policy'] = DIRECT;
-    notificationMessage = '关闭B站代理';
+    if (DIRECT_REGEX.test(url)) {
+  			apiBody['policy'] = DIRECT;
+    		notificationMessage = '关闭B站代理';
+		} else {
+      	apiBody['policy'] = DEFAULT;
+    		notificationMessage = '默认代理';
+    }
 }
 
 
@@ -54,18 +61,14 @@ promiseCurrentPolicy.then(currentPolicy => {
     } else {
         // perform switch
         $httpAPI('POST', '/v1/policy_groups/select', apiBody, (result) => {
-            if (result === null)
-                {
+            if (result === null){
                 $notification.post(notificationMessage, url, '');
-                console.log(`${url}，${notificationMessage}`);
-                }
-            else
-                {
+                console.log(`${url}，${notificationMessage}`);}
+            else{
                 // on success: result === null
                 // on failure: result === {"error" : "invalid parameters"}
                 $notification.post(notificationMessage, url, result.error);
-				console.log(`${url}，${notificationMessage}, error`);
-                }
+		console.log(`${url}，${notificationMessage}, error`);}
             $done();
         })
     }
