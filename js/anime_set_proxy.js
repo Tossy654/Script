@@ -12,7 +12,7 @@ const TARGET_PROXY = 'HK';
 const DIRECT = 'DIRECT';
 const DEFAULT = 'DIRECT';
 const SWITCH_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season)\?/;
-const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/offline\/version)\?/;
+const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/web-interface|x\/offline\/version|x\/v\d\/(account|feed))\?/;
 let url = $request.url;
 // ----------
 
