@@ -16,7 +16,7 @@ const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/offline
 
 // ----------
 let url = $request.url;
-$done({});
+$done({$request.url});
 // ----------
 
 // get current state to prevent unnecessary switch
