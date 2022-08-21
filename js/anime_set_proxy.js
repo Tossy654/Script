@@ -13,10 +13,11 @@ const DIRECT = 'DIRECT';
 const DEFAULT = 'DIRECT';
 const SWITCH_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season)\?/;
 const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/offline\/version)\?/;
-const url = $request.url;
+
 // ----------
-
-
+let url = $request.url;
+$done({});
+// ----------
 
 // get current state to prevent unnecessary switch
 let promiseCurrentPolicy = new Promise(function (resolve, reject) {
