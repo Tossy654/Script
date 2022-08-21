@@ -21,8 +21,7 @@ if (typeof ($response) !== 'undefined') {
 				
 				headers: {
 					Location: url
-				},
-				body: "{}"
+				}
 			});
 } else {
 	const res = {
