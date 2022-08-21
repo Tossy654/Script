@@ -13,7 +13,7 @@ const DIRECT = 'DIRECT';
 const DEFAULT = 'DIRECT';
 const SWITCH_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season)\?/;
 const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/web-interface|x\/offline\/version|x\/v\d\/(account\/mine|feed\/index))\?/;
-let url = $request.url;
+const url = $request.url;
 // ----------
 
 // get current state to prevent unnecessary switch
@@ -38,14 +38,17 @@ if (SWITCH_REGEX.test(url)) {
     // set policy group to TARGET_PROXY
     apiBody['policy'] = TARGET_PROXY;
     notificationMessage = '开启B站代理';
+	    console.log(`${notificationMessage}`);
 } else {
     // set policy group to DIRECT
     if (DIRECT_REGEX.test(url)) {
-  			apiBody['policy'] = DIRECT;
+  		apiBody['policy'] = DIRECT;
     		notificationMessage = '关闭B站代理';
+		console.log(`${notificationMessage}`);
 		} else {
       	apiBody['policy'] = DEFAULT;
     		notificationMessage = '默认代理';
+		console.log(`⚪${notificationMessage}`);
     }
 }
 
@@ -66,7 +69,7 @@ promiseCurrentPolicy.then(currentPolicy => {
                 // on success: result === null
                 // on failure: result === {"error" : "invalid parameters"}
                 $notification.post(notificationMessage, url, result.error);
-              console.log(`${url}，${notificationMessage}, error`);}
+		    console.log(`${url}，${notificationMessage}, error`);}
             $done();
         })
     }
