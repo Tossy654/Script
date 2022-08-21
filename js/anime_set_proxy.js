@@ -38,20 +38,17 @@ if (SWITCH_REGEX.test(url)) {
     // set policy group to TARGET_PROXY
     apiBody['policy'] = TARGET_PROXY;
     notificationMessage = '开启B站代理';
-	    console.log(`✅${notificationMessage}`);
-} else {
+	  console.log(`✅${notificationMessage}`);
+} else if (DIRECT_REGEX.test(url)) {
     // set policy group to DIRECT
-    if (DIRECT_REGEX.test(url)) {
-  		apiBody['policy'] = DIRECT;
-    		notificationMessage = '关闭B站代理';
+    apiBody['policy'] = DIRECT;
+  	notificationMessage = '关闭B站代理';
 		console.log(`⚫${notificationMessage}`);
-		} else {
-      	apiBody['policy'] = DEFAULT;
-    		notificationMessage = '默认代理';
+} else {
+    apiBody['policy'] = DEFAULT;
+    notificationMessage = '默认代理';
 		console.log(`⚪${notificationMessage}`);
-    }
 }
-
 
 
 promiseCurrentPolicy.then(currentPolicy => {
