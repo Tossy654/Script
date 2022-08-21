@@ -13,7 +13,7 @@ const DIRECT = 'DIRECT';
 const DEFAULT = 'DIRECT';
 const SWITCH_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season)\?/;
 const DIRECT_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(x\/offline\/version)\?/;
-const url = 'https://api.bilibili.com/x/offline/version?env=prod&fawkes_key=iphone';
+const url = $requst.url;
 // ----------
 
 
