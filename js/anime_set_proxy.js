@@ -38,13 +38,13 @@ if (SWITCH_REGEX.test(url)) {
     // set policy group to TARGET_PROXY
     apiBody['policy'] = TARGET_PROXY;
     notificationMessage = '开启B站代理';
-	    console.log(`${notificationMessage}`);
+	    console.log(`✅${notificationMessage}`);
 } else {
     // set policy group to DIRECT
     if (DIRECT_REGEX.test(url)) {
   		apiBody['policy'] = DIRECT;
     		notificationMessage = '关闭B站代理';
-		console.log(`${notificationMessage}`);
+		console.log(`⚫${notificationMessage}`);
 		} else {
       	apiBody['policy'] = DEFAULT;
     		notificationMessage = '默认代理';
