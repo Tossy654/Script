@@ -9,7 +9,7 @@
 
 // specify the policy group
 const TARGET_POLICY_GROUP = 'Bili';
-const TARGET_PROXY = 'HK';
+const TARGET_PROXY = 'TW2';
 const DIRECT = 'DIRECT';
 const DEFAULT = 'DIRECT';
 const SWITCH_REGEX = /^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/(app\/season|search(\/type)?))\?/;
