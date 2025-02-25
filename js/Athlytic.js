@@ -3,7 +3,7 @@
 Athlytic：https://apps.apple.com/app/id515094775
 
 [rewrite_local]
-^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Tossy654/Script/js/Athlytic.js
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Tossy654/Script/refs/heads/master/js/Athlytic.js
 
 [MITM]
 hostname = buy.itunes.apple.com
